@@ -1,7 +1,11 @@
 import jwt
 import datetime
+import os
+from dotenv import load_dotenv
+
 #generamos una secret key unica para poder verificar la autenticidad de las firmas del token
-SECRET_KEY = "ba44edf3b4f49a3650ef41eb1afcae841de3545a421e490a34fbeb6c4b0753aa"
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 def generar_token(service_name):
     #generamos el token unico mediante JWT datetime.utcnow obtiene la fecha y hora actual y timedelta representa la cantidad de tiempo

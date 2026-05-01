@@ -7,7 +7,7 @@ from database import insertar_logs, consultar_logs
 #instanciamos el objeto app y el argumento que le indica a flask donde buscar recursos
 app = Flask(__name__)
 
-#utilizamos el decorador para vincular una URL a las funciones, utilizamos el methodo POST
+#utilizamos el decorador para vincular una URL a las funciones, utilizamos el metodo POST
 @app.route("/auth/token", methods=["POST"])
 #funcion encargada de obtener los tokens de los servicios
 def get_token():
