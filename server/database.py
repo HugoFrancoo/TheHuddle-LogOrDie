@@ -19,3 +19,9 @@ def insertar_logs(logs_list):
     datos = [(log["occurred_at"], datetime.utcnow(), log["service"], log["severity"], log["message"]) for log in logs_list]
     cursor.executemany(insert_logs, datos)
     conn.commit()
+
+def consultar_logs():
+    conn, cursor = conectar_db()
+    cursor.execute("SELECT * FROM logs ORDER BY received_at DESC")
+    resultados = cursor.fetchall()
+    return resultados
