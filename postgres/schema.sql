@@ -8,4 +8,6 @@ CREATE TABLE logs(
     message TEXT NOT NULL
 )
 
+SELECT * FROM logs;
+
 

@@ -31,7 +31,7 @@ def manejo_logs():
     if token_verificado == None:
         return jsonify({"error": "Quien sos, bro?"}), 401
     #recibimos los logs como un diccionario de python y lo guardamos en la variable
-    logs_list = request.get_json()
+    logs_list = [request.get_json()]
     #llamamos a la funcion para insertar la lista de logs dentro de la base de datos
     save_logs = insertar_logs(logs_list)
     #retornamos un JSON con un mensaje de guardado correctamente 
