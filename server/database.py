@@ -12,6 +12,7 @@ def conectar_db():
     cursor = conn.cursor()
     return conn ,cursor
 
+#funcion encargada de insertar los logs en la base de datos
 def insertar_logs(logs_list):
     conn, cursor = conectar_db()
     #se realiza el insert de los logs con los campos correpondientes %s hace referencia a un placeholder marcador de posicion
