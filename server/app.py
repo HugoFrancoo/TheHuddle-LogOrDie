@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 #importamos las funciones para generar token y para verificarlas
 from auth import generar_token, verificar_token
 #importamos la funcion insertar_logs para almacenar la informacion en nuestra base de datos
-from database import insertar_logs, consultar_logs
+from database import insertar_logs, consultar_logs, init_db
 #instanciamos el objeto app y el argumento que le indica a flask donde buscar recursos
 app = Flask(__name__)
 
@@ -40,10 +40,14 @@ def manejo_logs():
 @app.route("/logs", methods=["GET"])
 #funcion encargada de mostrar los logs en un JSON
 def obtener_logs():
-    #llamamos a la funcion para mostrar los logs
-    traer_logs = consultar_logs()
+    occurred_at_start = request.args.get("occurred_at_start")
+    occurred_at_end = request.args.get("occurred_at_end")
+    received_at_start = request.args.get("received_at_start")
+    received_at_end = request.args.get("received_at_end")
+    traer_logs = consultar_logs(occurred_at_start,occurred_at_end,received_at_start,received_at_end)
     #retornamos un JSON con los logs
     return jsonify({"logs": traer_logs}), 200
 
 if __name__ == "__main__":
+    init_db()
     app.run(debug=True)
