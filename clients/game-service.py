@@ -23,14 +23,6 @@ def pedir_token():
     token = data["token"]
     return token 
 
-def enviar_log(token,log):
-    response = requests.post(
-    "http://localhost:5000/logs",
-    json=log,
-    headers={"Authorization": token}
-    )
-    return response
-
 def generar_log():
     severity, message = random.choice(LOGS_FALSOS)
     n = random.randint(1000, 9999)
@@ -42,6 +34,14 @@ def generar_log():
         "message": message.format(n=n)
     }
     return dict_log
+
+def enviar_log(token,log):
+    response = requests.post(
+    "http://localhost:5000/logs",
+    json=log,
+    headers={"Authorization": token}
+    )
+    return response
 
 if __name__ == "__main__":
     token = pedir_token()
