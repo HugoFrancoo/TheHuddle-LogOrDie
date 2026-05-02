@@ -34,7 +34,7 @@ def manejo_logs():
     logs_list = [request.get_json()]
     #llamamos a la funcion para insertar la lista de logs dentro de la base de datos
     save_logs = insertar_logs(logs_list)
-    #retornamos un JSON con un mensaje de guardado correctamente 
+    #si no hay nada en la variable save_logs entonces se retorna un mensaje de error 
     return jsonify({"mensaje": "logs guardados correctamente"}), 201
 
 @app.route("/logs", methods=["GET"])

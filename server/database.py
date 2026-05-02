@@ -25,4 +25,6 @@ def consultar_logs():
     conn, cursor = conectar_db()
     cursor.execute("SELECT * FROM logs ORDER BY received_at DESC")
     resultados = cursor.fetchall()
+    cursor.close()
+    conn.close()
     return resultados

@@ -45,6 +45,7 @@ def enviar_log(token,log):
 
 if __name__ == "__main__":
     token = pedir_token()
-    log = generar_log()
-    response = enviar_log(token, log)
-    print(response.status_code, response.json())
+    for i in range(10):
+        log = generar_log()
+        response = enviar_log(token, log)
+        print(response.status_code, response.json())
