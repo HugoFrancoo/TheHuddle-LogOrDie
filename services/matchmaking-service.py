@@ -28,7 +28,7 @@ def generar_log():
     n = random.randint(1000, 9999)
 
     dict_log = {
-        "occurred_at": datetime.utcnow().isoformat(),
+        "occurred_at": datetime.now().isoformat(),
         "service": "matchmaking-service",
         "severity": severity,
         "message": message.format(n=n)
@@ -45,7 +45,7 @@ def enviar_log(token,log):
 
 if __name__ == "__main__":
     token = pedir_token()
-    for i in range(10):
+    for i in range(100):
         log = generar_log()
         response = enviar_log(token, log)
         print(response.status_code, response.json())
