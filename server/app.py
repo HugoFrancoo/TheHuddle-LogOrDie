@@ -1,4 +1,4 @@
-#importamos la clase Flask de flask para poder instanciar objetos apartir de el
+#importamos la clase Flask de flask para poder instanciar objetos apartir de el, request oara 
 from flask import Flask, request, jsonify
 #importamos las funciones para generar token y para verificarlas
 from auth import generar_token, verificar_token
