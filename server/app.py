@@ -1,4 +1,4 @@
-#importamos la clase Flask de flask para poder instanciar objetos apartir de el, request oara 
+#importamos la clase Flask de flask para poder instanciar objetos apartir de el
 from flask import Flask, request, jsonify
 #importamos las funciones para generar token y para verificarlas
 from auth import generar_token, verificar_token
@@ -39,7 +39,7 @@ def manejo_logs():
     if not log_guardado:
         #retorna mensaje de error con error 500 error del servidor
         return jsonify({"error": "No se pudieron guardar los logs"}), 500
-    #si no hay nada en la variable save_logs entonces se retorna un mensaje de error 
+    #se retorna json de validacion de que se guardo correctamente el log
     return jsonify({"mensaje": "logs guardados correctamente"}), 201
 
 #ruta para consultar y visualizar los logs almacenados, acepta filtros de fecha opcionales

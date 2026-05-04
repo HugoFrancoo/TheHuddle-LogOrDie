@@ -1,7 +1,5 @@
 #libreria para generar y verificar tokens JWT
 import jwt
-#libreria para acceder a las variables de entorno del sistema operativo
-import os
 #lee el valor de la variable almacenada en .env para utilizarla
 SECRET_KEY='ba44edf3b4f49a3650ef41eb1afcae841de3545a421e490a34fbeb6c4b0753aa'
 #funcion encargada de generar los tokens para cada servicio

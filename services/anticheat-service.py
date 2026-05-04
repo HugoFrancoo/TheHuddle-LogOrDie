@@ -1,7 +1,7 @@
 #libreria para realizar peticiones HTTP al servidor
 import requests
 #libreria para seleccionar logs y numeros de forma aleatoria
-import random 
+import random
 #libreria para obtener la fecha y hora actual del sistema
 from datetime import datetime
 
@@ -52,11 +52,8 @@ def generar_log():
 def enviar_log(token,log):
     try:
         #realiza una peticion POST al servidor enviando el log y el token en el header
-        response = requests.post(
-        "http://localhost:5000/logs",
-        json=log,
-        headers={"Authorization": token}
-        )
+        #viaja la metadata del request
+        response = requests.post("http://localhost:5000/logs",json=log, headers={"Authorization": token})
         return response
     except requests.exceptions.ConnectionError:
         print("No se pudo enviar el log, el servidor no esta disponible")
