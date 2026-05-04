@@ -33,7 +33,7 @@ def pedir_token():
     except requests.exceptions.ConnectionError:
         print("No se pudo conectar al servidor, verifica que este corriendo")
         return None
-    
+
 #funcion encargada de generar logs falsos aleatorios
 def generar_log():
     #selecciona aleatoriamente una severidad y un mensaje de la lista de logs falsos

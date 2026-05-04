@@ -48,7 +48,7 @@ def insertar_logs(logs_list):
         #se realiza el insert de los logs con los campos correspondientes, %s hace referencia a un placeholder marcador de posicion
         insert_logs = ('INSERT INTO logs (occurred_at,received_at,service,severity,message) VALUES (%s, %s, %s, %s, %s)')
         #se construye la lista de tuplas con los datos de cada log
-        datos = [(log["occurred_at"], datetime.now().isoformat(), log["service"], log["severity"], log["message"]) for log in logs_list]
+        datos = [(log["occurred_at"], datetime.now(), log["service"], log["severity"], log["message"]) for log in logs_list]
         #se ejecuta el insert para cada log de la lista
         cursor.executemany(insert_logs, datos)
         conn.commit()
@@ -90,6 +90,13 @@ def consultar_logs(occurred_at_start=None, occurred_at_end=None, received_at_sta
         cursor.execute(query, params)
         #almacena en la variable resultado una lista con el resultado de las consultas
         resultados = cursor.fetchall()
+        #obtiene los nombres de las columnas
+        columnas = [desc[0] for desc in cursor.description]
+        #convierte cada fila en un diccionario combinando columnas con valores
+        resultados = [dict(zip(columnas, fila)) for fila in resultados]
+        for log in resultados:
+            log["occurred_at"] = log["occurred_at"].strftime("%Y-%m-%d %H:%M:%S")
+            log["received_at"] = log["received_at"].strftime("%Y-%m-%d %H:%M:%S")
         #cierra las conexiones
         cursor.close()
         conn.close()

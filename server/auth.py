@@ -2,13 +2,8 @@
 import jwt
 #libreria para acceder a las variables de entorno del sistema operativo
 import os
-#libreria para cargar las variables de entorno desde el archivo .env
-from dotenv import load_dotenv
-
-#busca el archivo .env para de ahi extraer la key 
-load_dotenv()
 #lee el valor de la variable almacenada en .env para utilizarla
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY='ba44edf3b4f49a3650ef41eb1afcae841de3545a421e490a34fbeb6c4b0753aa'
 #funcion encargada de generar los tokens para cada servicio
 def generar_token(service_name):
     #generamos el token JWT con el nombre del servicio firmado con la clave secreta
